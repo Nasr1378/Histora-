@@ -1,0 +1,29 @@
+{% for post in posts %}
+<div class="postListPost">
+    <div class="postListPost__header">
+        <!-- {% if post.host.id %} -->
+        <a href="{% url 'user-profile' post.host.id %}" class="postListPost__author">
+            <div class="avatar avatar--small">
+                <img src="{{post.host.avatar.url}}" />
+            </div>
+            <span>@{{post.host.username}}</span>
+        </a>
+        <!-- {% else %}
+        <span>No profile available</span>
+        {% endif %} -->
+        <div class="postListPost__actions">
+            <span>{{post.created|timesince}} ago</span>
+        </div>
+    </div>
+    <div class="postListPost__content">
+        <a href="{% url 'post' post.id %}">{{post.title}}</a>
+    </div>
+    <div class="postListPost__content">
+        <a href="{% url 'post' post.id %}">{{post.description}}</a>
+    </div>
+    
+    <div class="postListPost__meta">
+        <p class="postListPost__topic">{{post.topic.name}}</p>
+    </div>
+</div>
+{% endfor %}
